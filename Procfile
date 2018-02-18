@@ -1,1 +1,1 @@
-slack_bot:python main.py
+slack_bot: python main.py
