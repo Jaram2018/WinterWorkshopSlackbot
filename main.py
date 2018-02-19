@@ -62,4 +62,5 @@ websocket.enableTrace(True) # 디버깅을 위해 통신 정보를 모두 콘솔
 ws = websocket.WebSocketApp(socket_endpoint, on_message=on_message) # 가져온 URL, 콜백 함수를 이용하여 WebSocket 객체 생성
 
 thread = threading.Thread(target=packt_alarm_thread, args=(ws,))
+thread.start()
 ws.run_forever() # WebSocket 서버와 통신
