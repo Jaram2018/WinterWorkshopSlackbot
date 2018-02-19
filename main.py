@@ -9,6 +9,26 @@ import requests
 import websocket
 import json
 import os
+import datetime
+import time
+import threading
+
+packt_channel_id = 'C9AHFRRMX'
+def packt_alarm_thread(ws):
+    while True:
+        now = datetime.datetime.now()
+        tomorrow_9am = datetime.datetime.now()
+        if now.hour >= 9:
+            tomorrow_9am += datetime.timedelta(days=1)
+        tomorrow_9am = tomorrow_9am.replace(hour=9, minute=0, second=0)
+        delta = tomorrow_9am - now
+        time.sleep(delta.seconds + 1)
+        mock_msg = {
+            'channel': packt_channel_id,
+            'type': 'message',
+            'text': 'eBook'
+        }
+        ebook_bot.on_message(ws, json.dumps(mock_msg))
 
 def on_message(ws, message):
     orig_message = message
@@ -37,6 +57,9 @@ get_url = requests.get('https://slack.com/api/rtm.connect?token=' + token) # Sla
 
 socket_endpoint = get_url.json()['url'] # get_url.json()은 위의 JSON 객체 형태를 지니니까, 여기서 ULR 부분만 뽑아와서 socket_endpoint에 저장
 
+
 websocket.enableTrace(True) # 디버깅을 위해 통신 정보를 모두 콘솔에 프린트 
 ws = websocket.WebSocketApp(socket_endpoint, on_message=on_message) # 가져온 URL, 콜백 함수를 이용하여 WebSocket 객체 생성
+
+thread = threading.Thread(target=packt_alarm_thread, args=(ws,))
 ws.run_forever() # WebSocket 서버와 통신
