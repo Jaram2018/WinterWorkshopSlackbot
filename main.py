@@ -4,6 +4,7 @@ from EbookBot import ebook as ebook_bot
 from GithubSlackBot import github_bot 
 from SpellCheckBot import bots as spell_check_bot
 from TranslateBot import connectSlack as translate_bot
+from ShuttleCokeBot import shuttlecockBot as shuttlecoke_bot
 
 import requests
 import websocket
@@ -13,7 +14,21 @@ import datetime
 import time
 import threading
 
-packt_channel_id = 'C9AHFRRMX'
+vars = {
+    'shuttlecoke': {
+        'msgs': None
+    },
+    'ebook': {
+        'packt_channel_id': 'C9AHFRRMX'
+    }
+}
+credentials = None
+with open('credentials.json', 'r') as fr:
+    credentials = json.loads(fr.read())
+
+with open('ShuttleCokeBot/businfo.json', 'r') as fr:
+    vars['shuttlecoke']['msgs'] = json.loads(fr.read())
+
 def packt_alarm_thread(ws):
     while True:
         now = datetime.datetime.now()
@@ -24,7 +39,7 @@ def packt_alarm_thread(ws):
         delta = tomorrow_9am - now
         time.sleep(delta.seconds + 1)
         mock_msg = {
-            'channel': packt_channel_id,
+            'channel': vars['ebook']['packt_channel_id'],
             'type': 'message',
             'text': 'eBook'
         }
@@ -37,7 +52,7 @@ def on_message(ws, message):
         return # 여기서 다룰 필요가 없으므로 그냥 끝내기
     print(message)
     
-    if message['text'].startswith('맞춤법:'):
+    if type(message['text']) == 'str' and message['text'].startswith('맞춤법:'):
         new_message = message
         new_message['text'] = new_message['text'][4:]
         spell_check_bot.on_message(ws, orig_message)
@@ -51,8 +66,9 @@ def on_message(ws, message):
         github_bot.message(ws, orig_message)
     if translate_bot.translator_check(message['text']):
         translate_bot.on_message(ws, orig_message)
+    shuttlecoke_bot.on_message(ws, orig_message)
     
-token = os.environ['SLACKBOT_TOKEN']
+token = credentials['SLACKBOT_TOKEN']
 get_url = requests.get('https://slack.com/api/rtm.connect?token=' + token) # Slack RTM에 WebSocket 통신 URL을 가져오는 API 요청 보냄
 
 socket_endpoint = get_url.json()['url'] # get_url.json()은 위의 JSON 객체 형태를 지니니까, 여기서 ULR 부분만 뽑아와서 socket_endpoint에 저장
