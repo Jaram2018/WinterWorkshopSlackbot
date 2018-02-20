@@ -2,3 +2,4 @@ bs4==0.0.1
 python-dateutil==2.6.1
 requests==2.18.4
 websocket-client==0.46.0
+APScheduler==3.5.1
