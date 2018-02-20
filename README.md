@@ -2,11 +2,15 @@
 ## Instuction
 1. Get API key from Naver API portal. This API key should have access to Naver NMT API.   
 2. Get API key from Slack.
-3. Execute `EXPORT SLACKBOT_TOKEN=<Token from Slack>` to add SlackBot token to env vars.
-4. Execute `EXPORT PAPAGO_CLIENT_ID=<Naver API Client ID>; EXPORT PAPAGO_CLIENT_SECRET=<Naver API Client Secret>` to add Papago API credentials to env vars.
-    1. add lines above to shell rc files if you want to make this vars premanently.
-5. Apply all the patches in `_patches` folder.
-6. Run `python3 main.py` to start bot.
+3. Make a JSON file with name `credentials.json` and place it on the root of this repository.   
+This JSON file should be formatted like this:    
+`{
+    "SLACKBOT_TOKEN": <Token From Slack>, 
+    "PAPAGO_CLIENT_ID": <Naver API Client ID>,
+    "PAPAGO_CLIENT_SECRET": <Naver API Client Secret>
+}`
+4. Apply all the patches in `_patches` folder.
+5. Run `python3 main.py` to start bot.
 
 ## Usage 
 - Movie Schedule: `영화`
@@ -31,6 +35,8 @@
 - Translator: `(한영|영한):<Text>`
      - If message is formatted properly, bot will send message which contains translated message of sent text.
      - Example: Sending `한영:안녕하세요` will responded by bot with message `Hello`.
+- Shuttle Coke Bot
+    - Usage: WIP...
 
 ## Deploying on Heroku
 1. Connect [this repository](https://github.com/thy2134/WinterWorkshopSlackbot) to your heroku app.
