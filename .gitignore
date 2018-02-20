@@ -2,3 +2,4 @@ __pycache__
 test_*
 test
 _test
+credentials.json
