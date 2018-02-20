@@ -22,3 +22,6 @@
 [submodule "TranslateBot"]
 	path = TranslateBot
 	url = https://github.com/Jaram2018/Slackbot-Translator
+[submodule "ShuttleCokeBot"]
+	path = ShuttleCokeBot
+	url = https://github.com/NamHyunSil/shuttlecock-bot
