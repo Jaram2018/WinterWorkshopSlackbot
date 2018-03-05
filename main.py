@@ -33,9 +33,9 @@ def packt_alarm_thread(ws):
     while True:
         now = datetime.datetime.now()
         tomorrow_9am = datetime.datetime.now()
-        if now.hour >= 9:
+        if now.hour > 9 or (now.hour == 9 and now.minute >= 5):
             tomorrow_9am += datetime.timedelta(days=1)
-        tomorrow_9am = tomorrow_9am.replace(hour=9, minute=0, second=0)
+        tomorrow_9am = tomorrow_9am.replace(hour=9, minute=5, second=0)
         delta = tomorrow_9am - now
         time.sleep(delta.seconds + 1)
         mock_msg = {
