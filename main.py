@@ -26,7 +26,7 @@ credentials = None
 with open('credentials.json', 'r') as fr:
     credentials = json.loads(fr.read())
 
-with open('ShuttleCokeBot/businfo.json', 'r') as fr:
+with open('ShuttleCokeBot/busInfo.json', 'r') as fr:
     vars['shuttlecoke']['msgs'] = json.loads(fr.read())
 
 def packt_alarm_thread(ws):
