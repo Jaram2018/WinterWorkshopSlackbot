@@ -15,13 +15,13 @@
 	url = https://github.com/Jaram2018/WorkshopSlackBot
 [submodule "EbookBot"]
 	path = EbookBot
-	url = https://github.com/Jaram2018/ebookbot
+	url = https://github.com/na2na8/ebookbot
 [submodule "SpellCheckBot"]
 	path = SpellCheckBot
 	url = https://github.com/Jaram2018/chat_bot
 [submodule "TranslateBot"]
 	path = TranslateBot
-	url = https://github.com/Jaram2018/Slackbot-Translator
+	url = https://github.com/ByeongGil-Jung/Slackbot-Translator
 [submodule "ShuttleCokeBot"]
 	path = ShuttleCokeBot
-	url = https://github.com/Jaram2018/shuttlecock-bot
+	url = https://github.com/NamHyunSil/shuttlecock-bot
