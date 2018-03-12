@@ -6,19 +6,19 @@
 	url = https://github.com/Jaram2018/School-Calander
 [submodule "CinemaBot"]
 	path = CinemaBot
-	url = https://github.com/Jaram2018/cinema-bot
+	url = https://github.com/CXZ7720/cinema-bot
 [submodule "CoinoneBot"]
 	path = CoinoneBot
-	url = https://github.com/Jaram2018/coinone-ticker-slackbot
+	url = https://github.com/Mulgist/coinone-ticker-slackbot
 [submodule "GithubSlackBot"]
 	path = GithubSlackBot
-	url = https://github.com/Jaram2018/WorkshopSlackBot
+	url = https://github.com/thy2134/WorkshopSlackBot
 [submodule "EbookBot"]
 	path = EbookBot
 	url = https://github.com/na2na8/ebookbot
 [submodule "SpellCheckBot"]
 	path = SpellCheckBot
-	url = https://github.com/Jaram2018/chat_bot
+	url = https://github.com/ja01001/chat_bot
 [submodule "TranslateBot"]
 	path = TranslateBot
 	url = https://github.com/ByeongGil-Jung/Slackbot-Translator
