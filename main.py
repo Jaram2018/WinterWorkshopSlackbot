@@ -48,7 +48,7 @@ def packt_alarm_thread(ws):
 def on_message(ws, message):
     orig_message = message
     message = json.loads(message) # 전달받은 message는 무조건 JSON 형태이므로, 이를 사용하기 쉽게 Python Dict 형식으로 변환 
-    if 'type' not in message.keys() or message['type'] != 'message': # 입력받은 메세지가 텍스트가 아닐 경우
+    if 'type' not in message.keys() or 'text' not in message.keys() or message['type'] != 'message': # 입력받은 메세지가 텍스트가 아닐 경우
         return # 여기서 다룰 필요가 없으므로 그냥 끝내기
     print(message)
     
